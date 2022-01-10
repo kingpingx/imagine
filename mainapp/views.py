@@ -1,6 +1,8 @@
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render
+from django.http import request
+from django.shortcuts import redirect, render
 from django.http.response import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.views.generic.base import View, HttpResponseRedirect, HttpResponse
@@ -15,9 +17,14 @@ from .models import *
 
 # Create your views here.
 
+
 class HomeView(View):
     def get(self, request):
-        return render(request, "homepage.html")
+        if request.user.is_authenticated:
+            uname = request.user
+            return render(request, "homepage.html", {'name' : uname})
+        else:
+            return redirect("login")
 
 class RegisterView(View):
     template_name = 'signup.html'
@@ -114,7 +121,6 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                obj = User_profile.objects.get(user=user)
                 login(request, user)
                 print('success login')
                 return HttpResponseRedirect('/')
@@ -177,7 +183,7 @@ def change_password(request, token):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('login')
 
 @login_required
 def base(request):
