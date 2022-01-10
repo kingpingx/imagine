@@ -8,7 +8,7 @@ class User_profile(models.Model):
     username = models.CharField(max_length=30, blank=False, default="usern")
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    ph_number = models.IntegerField(blank=False, default=0000000000)
+    ph_number = models.IntegerField(blank=False)
     email_id = models.EmailField(max_length=254, blank=False, default='xxx@gmail.com')
     gender = models.CharField(max_length=20, blank=False, default='rather not to say')
     address = models.CharField(max_length=200, blank=False, default="no address")
