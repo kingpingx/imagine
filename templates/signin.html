@@ -1,0 +1,58 @@
+{% extends "sign-base.html" %}
+{% load crispy_forms_tags %}
+    {% block title %}Login{% endblock title %}
+    {% block container %}
+    <div class="outer-container">
+        <div class="inner-container1">
+            <div class="inner">
+              <h1>Hey Welcome Back!</h1><br> <br> 
+                <span> 
+                    To keep connected with us please Login with your personal info
+                </span>
+                <br> <br>
+                <br> <br>
+              <h1> <a href="/register">Sign-up</a></h1>
+            </div>
+        </div>
+        <div class="inner-container2">
+            <div class="inner">
+                <h1>Login Into Your Account</h1>
+                 <form action="login" method="POST" role="form">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <div style="text-align: right;">
+                    <a style=" text-decoration: none; color: #5f5d5d;" href="{% url 'forget_password' %}">Forgot password!</a>
+                </div>
+                    {% if messages %}
+                    <div>
+                            {% for message in messages %}
+                            <div class="m-2"><p class="text-center alert alert-danger">{{ message }}</p></div>
+                            {% endfor %}
+                    </div>
+                    {% endif %}
+
+                <div class="sub-inner">
+                    <button type="submit">Sign-in</button><br>
+                </div>
+                </form>
+                <div class="sub-inner">
+                    <span class="Create-YourAccount">
+                  Or Login using
+                    </span>
+                </div>
+                <div class="sub-inner2">
+                    <a href="#">
+                    <img border="0" alt="Google</i>" src="static\images\googlelogo.png">
+                    </a>
+                    <a href="#">
+                    <img border="0" alt="Facebook</i>" src="static\images\facebooklogo.jpeg">
+                    </a>
+                    <a href="#">
+                    <img border="0" alt="Twitter</i>" src="static\images\twitterlogo.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock container %} 

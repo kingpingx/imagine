@@ -1,0 +1,85 @@
+{% extends "sign-base.html" %}
+{% load crispy_forms_tags %}
+    {% block title %}Sign-up{% endblock title %}
+  
+    {% block container %}
+    <div class="outer-container">
+        <div class="inner-container1">
+            <div class="inner">
+              <h1>Hey Welcome Back!</h1><br> <br> 
+                <span> 
+                    To keep connected with us please Login with your personal info
+                </span>
+                <br> <br>
+                <br> <br>
+             
+              <h1> <a href="/login">login</a></h1>
+            </div>
+        </div>
+        <div class="inner-container2">
+            <div class="inner">
+                <h1>Create Your Account</h1>
+               <form action="register" method="POST" role="form">
+                {% csrf_token %}
+                <div class="sub-inner">
+                    {{ form.firstname }}
+                    {{ form.lastname }}
+                </div>
+                <div class="sub-inner">
+                    {{ form.username }}
+                </div>
+                <div class="sub-inner">
+                    {{ form.email }}
+                    <select class="form-control" name="gender" required>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Rather not to say</option>   
+                    </select>
+                </div>
+                <div class="sub-inner">
+                    {{ form.ph_number }}
+                </div>
+
+                <div class="sub-inner">
+                    {{ form.password }}
+                    {{ form.cnfpassword }}
+                </div>
+                <div class="sub-inner">
+                    {{ form.address }}
+                </div>
+                <div>
+                {% if messages %}
+                    <div>
+                            {% for message in messages %}
+                            <div class="m-2"><p class="text-center alert alert-danger alert-width">{{ message }}</p></div>
+                            {% endfor %}
+                    </div>
+                    {% endif %}
+                <div>
+                <div class="sub-inner">
+                    <button type="submit">Signup</button><br>
+                </div>
+                </form>
+                <div class="sub-inner">
+                    <span class="Create-YourAccount">
+                  Or Signup using
+                    </span>
+                </div>
+                <div class="sub-inner2">
+                    <a href="#">
+                    <img border="0" alt="Google</i>" src="static\images\googlelogo.png">
+                    </a>
+                    <a href="#">
+                    <img border="0" alt="Facebook</i>" src="static\images\facebooklogo.jpeg">
+                    </a>
+                    <a href="#">
+                    <img border="0" alt="Twitter</i>" src="static\images\twitterlogo.png">
+                    </a>
+                 <!-- <i class="fa fa-google" type="submit"><a href=""></a> </i>
+                 <i class="fa fa-twitter" type="submit"><a href=""></a> </i>
+                 <i class="fa fa-facebook" type="submit"><a href=""></a> </i> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock container %} 
