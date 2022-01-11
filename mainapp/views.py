@@ -26,6 +26,10 @@ class HomeView(View):
         else:
             return redirect("login")
 
+class GeneralPageView(View):
+    def get(self, request):
+        return render(request, "home.html")
+
 class RegisterView(View):
     template_name = 'signup.html'
 

@@ -26,7 +26,8 @@ from rest_framework import routers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomeView.as_view()),
+    path('', GeneralPageView.as_view()),
+    path('home', HomeView.as_view()),
     # path('user', include(routers.urls)),
     # path('api_auth', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include('avekshak.urls_api')),
