@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> {% block title %} {% endblock title %} | T.S.B</title>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body >
+    <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="#" target="_blank">AVEKSHAKA</a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="./base.html">Home</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">Contact</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="login">Login</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="register">SignUp</a>
+								</li>
+							</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+		</div>
+	</div>
+        
+<div id="p" class="landing-section">
+    <p class="mbr-section-title align-center  pb-3 mbr-fonts-style display-2" style="margin-top:300px; text-align:center;"> {% block head %} 
+        Welcome to Avekshaka!!
+         {% endblock head %}</p>
+    <div class="d-flex align-items-center justify-content-center" style="margin-bottom: 200px;">
+        <button type="button" class="btn mx-2 py-2">Know more</button>
+        <button type="button" class="btn mx-2 py-2">Login</button>
+    </div>
+</div>
+
+<div id="about" class="about-section">
+    <h1>About Us</h1>
+    <p>Avekshaka helps in maintaining a alzheimer's suffering people daily track, help in betterment for health, social and physical status. Secondary no other app provides all the functionality what Avekshaka is providing so it is also <b>unique</b>. Avekshaka is basically an App, which can be accessed from both mobile and Desktop. WHen our app is installed on the person's phone for the very first time, some basic information must be provided by the guardian about him, address and even about the targeted person. Some memorable things can also be added like any song or picture that can be helpful to the person in future.</p>
+    <p>A credential is also set by the guardian itself which will be used for reminder cancellation. It can be any name, phone number or something. After it, the main objective of the app is fulfilled whenever the person is going out or is alone. The guardian has to set the app on alert mode and specify about the purpose or visit or something whenever required. Our app will basically set a reminder and notify the person after every particular span of time. If the person is well he or she will remembers the credential set by the guardian and cancels the reminder with that only. But if the person has lost his memory then he will not be able to cancel that reminder, and in that case our app will send the person's current location to the guardian and meanwhile tries to recover person's memory by showing the data filled by the guardian and inform the person to stay at that particular location and not to panic.  In case if the person forgets the work but remembers the credentials, person can also see his work from purpose of visit area. Aside this, our app will provide notes and basic reminders for managing day to day activities and other recreation activites and exercises for motor improvement. Other than that ,our app will be multilingual and will also support Google speech services.</p>
+</div>
+
+
+{% block body %}
+
+{% endblock body %}
+
+
+<footer class="page-footer font-small black">
+  <div class="footer-copyright text-center py-2" style="background-color:#29293d; color:rgb(255, 255, 255); margin-bottom:0px">© 2021 Developed by Prabal Pandey</div>
+</footer>
+
+
+
+
+</body>
+</html>
