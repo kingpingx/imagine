@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
     {% block title %}Login{% endblock title %}
     {% block container %}
-    <!-- <style>
+    <style>
       #div_id_username label,
       #div_id_password{
         font-size: 21px;
@@ -23,7 +23,7 @@
         outline: none;
         border: 3px solid #7ed0dd !important;
       }
-    </style> -->
+    </style>
 
     <section class="vh-100" style="background-color: #eee;">
         <div class="container h-100">
@@ -41,19 +41,19 @@
                         {% csrf_token %}
                         
                         <div class="row col-12 justify-content-center align-items-center">
-                            <div class="form-outline col-lg-8 col-md-12 mb-4">
-                                <label class="form-label" for="username">UserName</label>
-                                <!-- {{ form|crispy }} -->
-                              <input type="text" id="username" name="username" class="form-control" />
+                            <div class="form-outline col-lg-6 col-md-12 mb-4">
+                                <!-- <label class="form-label" for="form3Example1c">UserName</label> -->
+                                {{ form|crispy }}
+                              <!-- <input type="text" id="form3Example1c" class="form-control" /> -->
                             </div>
                         </div>
       
-                        <div class="row col-12 justify-content-center align-items-center">
+                        <!-- <div class="row col-12 justify-content-center align-items-center">
                           <div class="form-outline col-lg-8 col-md-12 mb-4">
-                            <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control" />
+                            <label class="form-label" for="form3Example4c">Password</label>
+                            <input type="password" id="form3Example4c" class="form-control" />
                           </div>
-                        </div>
+                        </div> -->
       
                         <div class="row col-12 justify-content-center mx-4 mb-3 mb-lg-4">
                           <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5B9279 !important;">Login</button>
