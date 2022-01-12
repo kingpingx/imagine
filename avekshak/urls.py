@@ -31,7 +31,7 @@ urlpatterns = [
     # path('user', include(routers.urls)),
     # path('api_auth', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include('avekshak.urls_api')),
-    path('base', views.base),
+    path('exercise', views.exercise),
     path('login', LoginView.as_view(), name="login"),
     path('forget_password/', views.forget_password, name='forget_password'),
     path('change_password/<token>/', views.change_password, name='change_password'),

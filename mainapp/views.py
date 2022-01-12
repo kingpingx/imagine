@@ -21,8 +21,9 @@ from .models import *
 class HomeView(View):
     def get(self, request):
         if request.user.is_authenticated:
-            uname = request.user
-            return render(request, "homepage.html", {'name' : uname})
+            uname = str(request.user)
+            obj = User_profile.objects.get(username = uname)
+            return render(request, "homepage.html", {'name' : uname, 'objUser' : obj})
         else:
             return redirect("login")
 
@@ -127,7 +128,7 @@ class LoginView(View):
             if user is not None:
                 login(request, user)
                 print('success login')
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('home')
             else:
                 messages.error(
                     request, "Your username or password is incorrect")
@@ -190,9 +191,9 @@ class LogoutView(View):
         return HttpResponseRedirect('login')
 
 @login_required
-def base(request):
+def exercise(request):
     print(request.user)
-    return render(request, 'base.html')
+    return render(request, 'exercise.html')
 
 
 
