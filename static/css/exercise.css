@@ -24,3 +24,11 @@
     font-size: 26px;
     font-style: italic;
 }
+
+
+/* @media screen and (max-width: 1025px) {
+    iframe{
+        width: 400px !important;
+        height: 270px !important;
+    }
+} */

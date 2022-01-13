@@ -8,6 +8,27 @@
 	<link rel="stylesheet" href="../static/css/exercise.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+	<style>
+		.exer .iframe-div iframe{
+    		width: 100% !important;
+			height: 200px;
+		}
+		@media screen and (max-width: 576px) {
+			.exer .iframe-div{
+				margin-left: 0 !important;
+			}
+			.exer ul li h4,
+			.exer ul li p{
+				text-align: center;
+			}
+			.exer ul li h4{
+				font-size: 30px;
+			}
+			.exer ul li p{
+				font-size: 24px;
+			}
+		}
+	</style>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <title>Avekshaka</title>
@@ -19,7 +40,7 @@
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" href="#" target="_blank">AVEKSHAKA</a>	
+						<a class="navbar-brand" href="/home" target="_blank">AVEKSHAKA</a>	
 						
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -48,33 +69,68 @@
 	</div>
 	<div class="container exer">
 		<h1>Brain Games</h1>
-		<ul>
-			<li>
-				<h4>Card Games</h4>
-				<p>This could be duplicate bridge, a game of poker with the guys, or a cut-throat game of Hearts with the grandchildren.</p>
-			</li>
-			<li>
-				<h4>Jigsaw Puzzles</h4>
-				<p>Whether it's a 300-piece puzzle or 1000-piece puzzle, putting it all together is a good exercise for the brain.</p>
-			</li>
-			<li>
-				<h4>Sudoku and Crossword Puzzles</h4>
-				<p>These are games that require high level of thinking.</p>
-			</li>
+		<ul class="list-unstyled">
+			<div class="row align-items-center justify-content-center mb-5">
+				<div class="col-md-5 col-sm-12">
+					<li>
+						<h4>Card Games</h4>
+						<p>This could be duplicate bridge, a game of poker with the guys, or a cut-throat game of Hearts with the grandchildren.</p>
+					</li>
+				</div>
+				<div class="iframe-div col-md-5 offset-1 col-sm-12">
+					<iframe src="https://www.youtube.com/embed/LVFIpjNQ7R4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			<div class="row align-items-center justify-content-center mb-5">
+				<div class="iframe-div col-md-5 col-sm-12">
+					<iframe src="https://www.youtube.com/embed/MzcRTdHpWBE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-5 col-sm-12 offset-1">
+					<li>
+						<h4>Jigsaw Puzzles</h4>
+						<p>Whether it's a 300-piece puzzle or 1000-piece puzzle, putting it all together is a good exercise for the brain.</p>
+					</li>
+				</div>
+			</div>
+			<div class="row align-items-center justify-content-center mb-5">
+				<div class="col-md-5 col-sm-12">
+					<li>
+						<h4>Sudoku and Crossword Puzzles</h4>
+						<p>These are games that require high level of thinking.</p>
+					</li>
+				</div>
+				<div class="iframe-div col-md-5 col-sm-12 offset-1">
+					<iframe src="https://www.youtube.com/embed/OtKxtvMUahA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
 		</ul>
 		<h1>Art</h1>
-		<ul>
-			<li>
-				<h4>Create scrapbooks and photo albums</h4>
-				<p>This can be a great fun and also hepls in remembering the good memory.</p>
-			</li>
-			<li>
-				<h4>Painting and Drawing</h4>
-				<p>It sets the mind to one place.</p>
-			</li>
+		<ul class="list-unstyled">
+			<div class="row align-items-center justify-content-center mb-5">
+				<div class="iframe-div col-md-5 col-sm-12">
+					<iframe src="https://www.youtube.com/embed/bc4vRjtIQv4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-5 col-sm-12 offset-1">
+					<li>
+						<h4>Create scrapbooks and photo albums</h4>
+						<p>This can be a great fun and also hepls in remembering the good memory.</p>
+					</li>
+				</div>
+			</div>
+			<div class="row align-items-center justify-content-center mb-5">
+				<div class="col-md-5 col-sm-12">
+					<li>
+						<h4>Painting and Drawing</h4>
+						<p>It sets the mind to one place.</p>
+					</li>
+				</div>
+				<div class="iframe-div col-md-5 col-sm-12 offset-1">
+					<iframe src="https://www.youtube.com/embed/Ro_xTd-Ugzw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
 		</ul>
 		<h1>Learn a new skill</h1>
-		<ul>
+		<ul class="list-unstyled">
 			<li>
 				<h4>Learn a new language</h4>
 				<p>This makes our brain more strong and healthy.</p>
@@ -85,34 +141,40 @@
 			</li>
 		</ul>
 		<h1>Music and Dancing</h1>
-		<ul>
-			<li>
-				<h4>Listen musinc</h4>
-				<p>Listening music is always soothing a nd freshens the mind.</p>
-			</li>
-			<li>
-				<h4>Dance</h4>
-				<p>It is also a good activity.</p>
-			</li>
-			<li>
-				<h4>Play musical instrument</h4>
-				<p>Musicians keep their hand-eye coordination finely handed and their brains tracking.</p>
-			</li>
+		<ul class="list-unstyled">
+			<div class="row align-items-center justify-content-center mb-5">
+				<div class="col-md-5 col-sm-12">
+					<li>
+						<h4>Listen musinc</h4>
+						<p>Listening music is always soothing a nd freshens the mind.</p>
+					</li>
+					<li>
+						<h4>Dance</h4>
+						<p>It is also a good activity.</p>
+					</li>
+				</div>
+				<div class="iframe-div col-md-5 col-sm-12 offset-1">
+					<iframe src="https://www.youtube.com/embed/jOxP3BEgVtQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
 		</ul>
 		<h1>Exercise</h1>
-		<ul>
-			<li>
-				<h4>Walking</h4>
-				<p>walk daily for 15 minutes atleast will be good for health.</p>
-			</li>
-			<li>
-				<h4>Streching</h4>
-				<p>Make simple streching a part of your daily morning routine.</p>
-			</li>
-			<li>
-				<h4>Gardening</h4>
-				<p>This is a great exercise and learning to plant, care for and cultivate flowers will keep your body and your brain busy.</p>
-			</li>
+		<ul class="list-unstyled">
+			<div class="row align-items-center justify-content-center mb-5">
+				<div class="col-md-5 col-sm-12">
+					<li>
+						<h4>Walking</h4>
+						<p>walk daily for 15 minutes atleast will be good for health.</p>
+					</li>
+					<li>
+						<h4>Streching</h4>
+						<p>Make simple streching a part of your daily morning routine.</p>
+					</li>
+				</div>
+				<div class="iframe-div col-md-5 col-sm-12 offset-1">
+					<iframe src="https://www.youtube.com/embed/9nDBY2tH3lI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
 		</ul>
 	</div>
 </body>

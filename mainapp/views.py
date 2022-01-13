@@ -195,6 +195,11 @@ def exercise(request):
     print(request.user)
     return render(request, 'exercise.html')
 
+@login_required
+def userinfo(request):
+    print(request.user)
+    return render(request, 'userinfo.html')
+
 
 
 #api 
