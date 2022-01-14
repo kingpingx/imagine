@@ -1,3 +1,4 @@
+from re import template
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -14,6 +15,7 @@ from django.contrib import messages
 import uuid
 from .helper import send_forget_password_mail, send_message
 from .models import *
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -29,6 +31,8 @@ class HomeView(View):
 
 class GeneralPageView(View):
     def get(self, request):
+        if request.user.is_authenticated:
+           return HttpResponseRedirect("home")
         return render(request, "home.html")
 
 class RegisterView(View):
@@ -44,15 +48,15 @@ class RegisterView(View):
     def post(self, request):
         # pass filled out HTML-Form from View to RegisterForm()
         form = RegisterForm(request.POST)
-        sex = request.POST['gender'].lower()
+        sex = request.POST['gender'].upper()
         if form.is_valid():
             # create a User account
             user_name = form.cleaned_data['username']
             password = form.cleaned_data['password']
             cfpassword = form.cleaned_data['cnfpassword']
             emailid = form.cleaned_data['email'].lower()
-            f_name = form.cleaned_data['firstname'].lower()
-            l_name = form.cleaned_data['lastname'].lower()
+            f_name = form.cleaned_data['firstname'].upper()
+            l_name = form.cleaned_data['lastname'].upper()
             p_num = form.cleaned_data['ph_number']
             add = form.cleaned_data['address']
             
@@ -195,10 +199,10 @@ def exercise(request):
     print(request.user)
     return render(request, 'exercise.html')
 
-@login_required
-def userinfo(request):
-    print(request.user)
-    return render(request, 'userinfo.html')
+# @login_required
+# def userinfo(request):
+#     print(request.user)
+#     return render(request, 'userinfo.html')
 
 
 
@@ -209,4 +213,79 @@ def userinfo(request):
 #     serializer_class = UserSerializers
 
 
+class ProfileView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+           objUser = User_profile.objects.get(username = request.user)
+           print("helo")
+           imgpath = objUser.image.url
+           print(imgpath)
+           return render(request, 'profile.html', { 'userobj' : objUser, 'path' : imgpath})
+
+
+class EditProfileView(View):
+    template_name = 'completeprofile.html'
+    def get(self, request):
+        form = ProfileForm()
+        return render(request, self.template_name, {'form': form})
     
+    def post(self, request):
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            f_name = form.cleaned_data['firstname'].upper()
+            l_name = form.cleaned_data['lastname'].upper()
+            p_num = form.cleaned_data['ph_number']
+            add = form.cleaned_data['address']
+            gender = form.cleaned_data['gender']
+            image = form.cleaned_data['img']
+            filename = handle_uploaded_file(request.FILES["img"], str(request.user))
+            # form.save()
+        userobj = User.objects.get(username = request.user)
+        userprofileobj = User_profile.objects.get(username = request.user)
+        if f_name != "":
+            print("f name = ", f_name)
+            userobj.first_name = f_name
+            userprofileobj.first_name = f_name
+            userobj.save()
+            userprofileobj.save()
+        if l_name != "":
+            print("l name = ", l_name)
+            userobj.last_name = l_name
+            userprofileobj.last_name = l_name
+            userobj.save()
+            userprofileobj.save()
+        if p_num is not None:
+            print("=-=-==")
+            print(p_num)
+            userprofileobj.ph_number = p_num
+            userprofileobj.save()
+        if add != "":
+            print("add = ", add)
+            userprofileobj.address = add
+            userprofileobj.save()
+        if gender is not None:
+            print("gender = ", gender)
+            userprofileobj.gender = gender
+            userprofileobj.save()
+        userprofileobj.image = filename
+        userprofileobj.save()
+
+        
+        
+        return HttpResponseRedirect('/profile')
+        
+        
+        # if request.FILES['myfile']:
+        #     for filename, file in request.FILES.iteritems():
+        #         name = request.FILES[filename].name
+        #         img = request.FILES['myfile']
+        #         fs = FileSystemStorage()     
+        #         filename = fs.save(name, img)
+        
+       
+def handle_uploaded_file(f, name):  
+    with open('media/images/'+name+".jpeg", 'wb+') as destination:  
+        for chunk in f.chunks():  
+            destination.write(chunk) 
+    str = f"images/{name}.jpeg"
+    return str
