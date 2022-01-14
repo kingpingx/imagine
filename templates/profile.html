@@ -1,4 +1,4 @@
-{{userobj.first_name}}<br>
+<!-- {{userobj.first_name}}<br>
 {{userobj.last_name}}<br>
 {{userobj.ph_number}}<br>
 {{userobj.gender}}<br>
@@ -10,4 +10,103 @@
 <img src="{{ path }}" alt="user image">
 
 <a href='profile/edit'><button>Edit Profile</button></a><br><br>
-<a href='home'><button>home</button></a>
+<a href='home'><button>home</button></a> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/homepage.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="/home" target="_blank">AVEKSHAKA</a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/home">Home</a>
+								</li>
+								<!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">Contact</a>
+								</li> -->
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="exercise">Exercise</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="profile">Profile</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/logout">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</nav>		
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="container user-container d-flex flex-column align-items-center">
+        <div class="row col-lg-4 col-md-6 col-8 user-img align-items-center justify-content-center">
+            <img src="{{ path }}" alt="user image">
+        </div>
+        <div class="row" style="width: 70%;">
+            <div class="d-flex first-name col-md-12 justify-content-center align-items-center">
+                <h4>First Name: </h4>
+                <span>{{userobj.first_name}}</span>
+            </div>
+            <div class="d-flex last-name col-md-12 justify-content-center align-items-center">
+                <h4>Last Name: </h4>
+                <span>{{userobj.last_name}}</span>
+            </div>
+        </div>
+        <div class="row" style="width: 70%;">
+            <div class="d-flex col-md-12 justify-content-center align-items-center">
+                <h4>Phone Number: </h4>
+                <span>{{userobj.ph_number}}</span>
+            </div>
+            <div class="d-flex col-md-12 justify-content-center align-items-center">
+                <h4>Gender: </h4>
+                <span>{{userobj.gender}}</span>
+            </div>
+        </div>
+        <div class="row" style="width: 70%;">
+            <div class="d-flex col-md-12 justify-content-center align-items-center">
+                <h4>Username: </h4>
+                <span>{{userobj.username}}</span>
+            </div>
+            <div class="d-flex col-md-12 justify-content-center align-items-center">
+                <h4>Email: </h4>
+                <span>{{userobj.email_id}}</span>
+            </div>
+        </div>
+        <div class="row" style="width: 70%;">
+            <div class="d-flex col-12 justify-content-center align-items-center">
+                <h4>Address: </h4>
+                <span>{{userobj.address}}</span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <a href='profile/edit'><button class="btn mx-2">Edit Profile</button></a>
+            <a href='home'><button class="btn mx-2">Home</button></a>
+        </div>
+    </div>
+</body>
+</html>

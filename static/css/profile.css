@@ -1,0 +1,38 @@
+.user-container{
+    margin-top: 200px;
+    padding: 0 80px;
+}
+.user-img{
+    display: inline-block;
+    position: relative;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-bottom: 50px;
+}
+.user-img img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.user-container h4{
+    font-size: 32px;
+    font-family: 'Crisman Pro', cursive;
+    margin-right: 10px;
+}
+.user-container span{
+    font-size: 26px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+}
+.btn{
+    background-color: #5B9279 !important;
+    color: #fff !important;
+    height: 55px;
+    width: 120px;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
+.btn:hover, .btn:active{
+    background-color: #8FCB9B !important;
+}

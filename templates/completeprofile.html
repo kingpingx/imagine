@@ -1,9 +1,90 @@
-<body>  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/home.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+            form{
+                width: 80%;
+            }
+            input, select{
+                border-radius: 5px;
+                outline: none;
+                border: 1px solid #ced4da;
+                height: 40px;
+                padding-left: 10px;
+                width: 100% !important;
+                margin-bottom: 10px !important;
+            }
+            input:focus{
+                outline: none;
+                border: 3px solid #7ed0dd !important;
+            }
+            select{
+                width: 100%;
+            }
+            form p{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+            }
+            form p label{
+                    font-size: 18px;
+                    margin-right: 20px;
+            }
+
+    </style>
+    
+<body>
+        <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="/home" target="_blank">AVEKSHAKA</a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/home">Home</a>
+								</li>
+								<!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">Contact</a>
+								</li> -->
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="exercise">Exercise</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="profile">Profile</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="/logout">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</nav>		
+				</div>
+			</div>
+		</div>
+	</div>
+        <div class="container d-flex flex-column align-items-center justify-content-center mt-5">
+                <h1 class="my-5" style="color: #5B9279;">User Profile</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data">  
             {% csrf_token %}  
-            {{ form.as_p }}  
-            <button type="submit" class="save btn btn-default">Save</button>  
-    </form>  
+            {{ form.as_p }} 
+            <div class="d-flex align-items-center justify-content-center mt-4"> 
+            <button type="submit" class="save btn btn-default mx-2">Save</button>
+            <a href='/profile'><button class="btn mx-2">Profile</button></a>
+            </div>
+
+    </form>
+    
 
 
-    <a href='/profile'><button>Profile</button></a>
+    <!-- <a href='/profile'><button class="btn">Profile</button></a> -->
+</div>  
+</body>

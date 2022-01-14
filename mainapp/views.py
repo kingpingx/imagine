@@ -199,6 +199,11 @@ def exercise(request):
     print(request.user)
     return render(request, 'exercise.html')
 
+# @login_required
+# def userinfo(request):
+#     print(request.user)
+#     return render(request, 'userinfo.html')
+
 
 
 #api 
@@ -212,7 +217,9 @@ class ProfileView(View):
     def get(self, request):
         if request.user.is_authenticated:
            objUser = User_profile.objects.get(username = request.user)
+           print("helo")
            imgpath = objUser.image.url
+           print(imgpath)
            return render(request, 'profile.html', { 'userobj' : objUser, 'path' : imgpath})
 
 
