@@ -34,6 +34,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
   'localhost',
   '127.0.0.1',
+  '.herokuapp.com'
   ]
 
 
@@ -42,6 +43,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'whitenoise.runserver_nostatic',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -62,6 +64,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 #CORS_ORIGIN_WHITELIST =('https:\\www.google.com')
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -143,7 +146,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
