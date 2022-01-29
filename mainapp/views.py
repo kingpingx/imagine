@@ -16,6 +16,8 @@ import uuid
 from .helper import send_forget_password_mail, send_message
 from .models import *
 from django.core.files.storage import FileSystemStorage
+import os
+from wsgiref.util import FileWrapper
 
 # Create your views here.
 
@@ -26,13 +28,12 @@ class HomeView(View):
             uname = str(request.user)
             obj = User_profile.objects.get(username = uname)
             return render(request, "homepage.html", {'name' : uname, 'objUser' : obj})
-        else:
-            return redirect("login")
+        return redirect("login")
 
 class GeneralPageView(View):
     def get(self, request):
         if request.user.is_authenticated:
-           return HttpResponseRedirect("home")
+           return HttpResponseRedirect("/home")
         return render(request, "home.html")
 
 class RegisterView(View):
@@ -218,16 +219,20 @@ class ProfileView(View):
         if request.user.is_authenticated:
            objUser = User_profile.objects.get(username = request.user)
            print("helo")
-           imgpath = objUser.image.url
-           print(imgpath)
-           return render(request, 'profile.html', { 'userobj' : objUser, 'path' : imgpath})
+           objUser.path = str(request.user)
+           print("+-=-=-=-=-=+")
+           print(objUser.path)
+           print("+-=-=-=-=-=+")
+           return render(request, 'profile.html', { 'userobj' : objUser})
 
 
 class EditProfileView(View):
     template_name = 'completeprofile.html'
     def get(self, request):
-        form = ProfileForm()
-        return render(request, self.template_name, {'form': form})
+        if request.user.is_authenticated:
+            form = ProfileForm()
+            return render(request, self.template_name, {'form': form})
+        return HttpResponseRedirect("/home")
     
     def post(self, request):
         form = ProfileForm(request.POST, request.FILES)
@@ -238,10 +243,11 @@ class EditProfileView(View):
             add = form.cleaned_data['address']
             gender = form.cleaned_data['gender']
             image = form.cleaned_data['img']
-            filename = handle_uploaded_file(request.FILES["img"], str(request.user))
+            
             # form.save()
-        userobj = User.objects.get(username = request.user)
-        userprofileobj = User_profile.objects.get(username = request.user)
+
+            userobj = User.objects.get(username = request.user)
+            userprofileobj = User_profile.objects.get(username = request.user)
         if f_name != "":
             print("f name = ", f_name)
             userobj.first_name = f_name
@@ -267,8 +273,10 @@ class EditProfileView(View):
             print("gender = ", gender)
             userprofileobj.gender = gender
             userprofileobj.save()
-        userprofileobj.image = filename
-        userprofileobj.save()
+        if 'img' in request.FILES:
+            filename = handle_uploaded_file(request.FILES["img"], str(request.user))
+            userprofileobj.image = filename
+            userprofileobj.save()
 
         
         
@@ -289,3 +297,20 @@ def handle_uploaded_file(f, name):
             destination.write(chunk) 
     str = f"images/{name}.jpeg"
     return str
+
+class GetFileView(View):
+
+    def get(self, request, file_name):
+        if request.user.is_authenticated:
+            # print("YYY")
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            print("HELLO")
+            print(BASE_DIR)
+            print(file_name)
+            file = FileWrapper(
+                open(BASE_DIR+'/media/images/'+file_name+'.jpeg', 'rb'))
+            response = HttpResponse(file, content_type='image/jpeg')
+            response['Content-Disposition'] = 'attachment; filename={}'.format(
+                file_name)
+            return response
+        return HttpResponseRedirect("/home")

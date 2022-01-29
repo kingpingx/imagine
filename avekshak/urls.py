@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/', include('avekshak.urls_api')),
     path('exercise', views.exercise),
     path('profile', ProfileView.as_view(), name="profile"),
+    path('user_image/<file_name>', GetFileView.as_view()),
     path('profile/edit', EditProfileView.as_view(), name="edit_profile"),      
     path('logout', LogoutView.as_view()),
     # path('user', include(routers.urls)),

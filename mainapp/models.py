@@ -17,7 +17,8 @@ class User_profile(models.Model):
     email_id = models.EmailField(max_length=254, blank=False, default='xxx@gmail.com')
     gender = models.CharField(max_length=20, choices=CHOICES, default='select')
     address = models.CharField(max_length=200, blank=False, default="no address")
-    image = models.ImageField(blank=True, upload_to='images/')
+    path = models.CharField(max_length=60, blank=True)
+    # image = models.ImageField(blank=True, upload_to='images/')
 
     def __str__(self):
         return self.first_name
